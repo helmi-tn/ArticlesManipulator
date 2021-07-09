@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Symphart articles{% endblock %}
+
+{% block body %}
+    {% if articles %}
+        <table id="article" class="table table-striped">
+        <thead> 
+            <tr>
+                <th> Article Title </th>
+                <th> Actions </th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for article in articles %}
+            <tr>
+                <td>{{ article.title }}</td>
+                <td>
+                    <a class="btn btn-dark" href="/article/{{article.id}}">Show</a>
+                    <a class="btn btn-light" href="/article/edit/{{article.id}}">Edit</a>
+                    <a class="btn btn-danger delete-article" href="/" data-id="{{article.id}}">Delete</a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+        </table>
+
+    {% else %}
+        <p> No articles to display my dude </p>
+    {% endif %}
+{% endblock %}
+
+{% block javascripts%}
+ <script src="/js/main.js"></script>
+{% endblock %}
